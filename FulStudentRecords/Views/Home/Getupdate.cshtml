@@ -1,0 +1,53 @@
+﻿@model Record;
+
+
+
+<div class="container">
+
+	<h4 class="mt-4 h-25"> Update task</h4>
+
+	<div class="my-auto mx-5 py-5 justify-content-center">
+		<form asp-action="Update" asp-controller="Record">
+
+			<input type="hidden" name="Id" value="@Model.Id" asp-for="Id" />
+			<div>
+				<label>Name</label>
+				<input type="text" name="name" value="@Model.Name" Placeholder="Name of student" class="form-control" asp-for="Name" />
+
+			</div>
+
+			<div>
+				<label>Maths</label>
+				<input type="text" name="Maths" value="@Model.Maths" Placeholder="Maths score" class="form-control" asp-for="Maths" />
+			</div>
+			<div>
+				<label>Physics</label>
+				<input type="text" name="Physics" value="@Model.Physics" Placeholder="score" class="form-control" asp-for="Physics" />
+			</div>
+			<div>
+				<label>Chemistry</label>
+				<input type="text" name="Maths" value="@Model.Chemistry" Placeholder="score" class="form-control" asp-for="Chemistry" />
+			</div>
+			<div>
+				<label>Biology</label>
+				<input type="text" name="Biology" value="@Model.Biology" Placeholder="score" class="form-control" asp-for="Biology" />
+			</div>
+			<div>
+				<label>English</label>
+				<input type="text" name="Maths" value="@Model.English" Placeholder=" score" class="form-control" asp-for="English" />
+			</div>
+			<div>
+				<label>Total</label>
+				<input type="text" name="Totals" value="@Model.Total" Placeholder="score" class="form-control" asp-for="Total" />
+			</div>
+
+
+
+
+			<div class="text-center mt-3">
+				<button class="btn btn-primary mx-2 my2">Submit</button>
+			</div>
+		</form>
+
+	</div>
+</div>

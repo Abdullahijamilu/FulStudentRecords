@@ -1,0 +1,77 @@
+﻿Copy code
+@model List<FulStudentRecords.Models.Record>
+
+@{
+	@if (TempData["success"] != null)
+	{
+		<div class="alert alert-success">
+			@TempData["success"]
+		</div>
+	}
+}
+
+<h4>Students Register</h4>
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Maths</th>
+			<th scope="col">Physics</th>
+			<th scope="col">Chemistry</th>
+			<th scope="col">Biology</th>
+			<th scope="col">English</th>
+			<th scope="col">Total</th>
+			<th scope="col">Grade</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var data in Model)
+		{
+			int math = Convert.ToInt32(data.Maths);
+			int physics = Convert.ToInt32(data.Physics);
+			int chemistry = Convert.ToInt32(data.Chemistry);
+			int biology = Convert.ToInt32(data.Biology);
+			int english = Convert.ToInt32(data.English);
+
+			int total = math + physics + chemistry + biology + english;
+			string grade = "";
+			if (total >= 80)
+			{
+				grade = "A";
+			}
+			else if (total >= 70 && total < 80)
+			{
+				grade = "B";
+			}
+			else if (total >= 60 && total < 70)
+			{
+				grade = "C";
+			}
+			else if (total >= 50 && total < 60)
+			{
+				grade = "D";
+			}
+			else
+			{
+				grade = "F";
+			}
+			<tr>
+				<td>@data.Name</td>
+				<td>@data.Maths</td>
+				<td>@data.Physics</td>
+				<td>@data.Chemistry</td>
+				<td>@data.Biology</td>
+				<td>@data.English</td>
+				<td>@total</td> 
+				<td>@grade</td> 
+				<td>
+					<a asp-controller="Home" asp-action="Details" asp-route-id="@data.Id">Details</a>
+					<a asp-controller="Home" asp-action="Update" asp-route-id="@data.Id">Update</a>
+					<a asp-controller="Home" asp-action="Delete" asp-route-id="@data.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
